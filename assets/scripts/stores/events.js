@@ -3,6 +3,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 
 const addressToStore = data => {
+  console.log(data)
   if (data.store.address_id === data.address.id) {
     // show store with this address_id
   }
@@ -42,6 +43,7 @@ const onUpdateStore = e => {
 const onShowStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data)
   // match address.id with stores.address_id to show store
   api.showStore(data.store.address_id)
     .then(ui.onShowSuccess)
