@@ -4,7 +4,9 @@ const userEvents = require('./users/events')
 const storeEvents = require('./stores/events')
 
 $(() => {
-  $('.show-forms').onClick('display', 'inline')
+  $('#sign-up').on('click', userEvents.displaySignUpForm)
+  $('#sign-in').on('click', userEvents.displaySignInForm)
+  $('#change-password').on('click', userEvents.displayChangePasswordForm)
   $('#sign-up-form').on('submit', userEvents.onSignUp)
   $('#sign-in-form').on('submit', userEvents.onSignIn)
   $('#change-password-form').on('submit', userEvents.onChangePassword)

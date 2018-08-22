@@ -2,6 +2,21 @@ const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 
+const displaySignUpForm = e => {
+  e.preventDefault()
+  $('#sign-up-form').css('display', 'inline')
+}
+
+const displaySignInForm = e => {
+  e.preventDefault()
+  $('#sign-in-form').css('display', 'inline')
+}
+
+const displayChangePasswordForm = e => {
+  e.preventDefault()
+  $('#change-password-form').css('display', 'inline')
+}
+
 const onSignUp = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
@@ -34,6 +49,9 @@ const onSignOut = e => {
 }
 
 module.exports = {
+  displaySignUpForm,
+  displaySignInForm,
+  displayChangePasswordForm,
   onSignUp,
   onSignIn,
   onChangePassword,
