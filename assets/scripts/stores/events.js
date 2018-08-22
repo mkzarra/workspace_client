@@ -2,6 +2,12 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 
+const addressToStore = data => {
+  if (data.store.address_id === data.address.id) {
+    // show store with this address_id
+  }
+}
+
 const onSearchByName = e => {
   e.preventDefault()
   const data = getFormFields(e.target)

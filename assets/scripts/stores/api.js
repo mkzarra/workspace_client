@@ -47,7 +47,7 @@ const updateStore = data => {
 
 const showStore = data => {
   return $.ajax({
-    url: config.apiUrl + '/store' + data.id,
+    url: config.apiUrl + '/stores' + data.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

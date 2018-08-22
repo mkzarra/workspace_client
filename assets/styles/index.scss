@@ -1,2 +1,18 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.actions {
+  background: #ffe18f;
+}
+
+.branding {
+  align-self: left;
+  color: #f62445;
+  font-size: 2em;
+  padding: .05%;
+  margin: auto;
+}
+
+#content {
+  background-color: #fae6b0;
+}
