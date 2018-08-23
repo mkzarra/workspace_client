@@ -12,4 +12,5 @@ $(() => {
   $('#change-password-form').on('submit', userEvents.onChangePassword)
   $('#sign-out').on('click', userEvents.onSignOut)
   $('#search-by-name').on('submit', storeEvents.onSearchByName)
+  $('#search-by-address').on('submit', storeEvents.onShowStore)
 })

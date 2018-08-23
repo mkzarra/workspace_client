@@ -43,9 +43,10 @@ const onUpdateStore = e => {
 const onShowStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  debugger
   console.log(data)
-  // match address.id with stores.address_id to show store
-  api.showStore(data.store.address_id)
+  // match store.id with address to show store
+  api.showStore(data)
     .then(ui.onShowSuccess)
     .catch(ui.onShowFailure)
 }
