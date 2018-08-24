@@ -17,4 +17,5 @@ $(() => {
   $('#create-store').on('submit', storeEvents.onCreateStore)
   $('#create-address').on('submit', addressEvents.onCreateAddress)
   $('#display-create-forms').on('click', storeEvents.displayCreateForms)
+  $('#create-forms').on('')
 })
