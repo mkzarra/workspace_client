@@ -11,6 +11,14 @@ const displayCreateForms = e => {
   $('#search-by-address').hide()
 }
 
+const displayUpdateForms = e => {
+  e.preventDefault()
+  $('#update-store').css('display', 'inline-block')
+  $('#change-password').css('display', 'none')
+  $('#change-password-form').hide()
+  $('#search-by-address').hide()
+}
+
 const displaySearchForms = e => {
   $('#search-by-address').css('display', 'inline-block')
 }
@@ -50,7 +58,8 @@ const onShowStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
   console.log(data)
-  // match store.id with address to show store
+  console.log(data.address.store_id)
+  // get store_id from address to show store
   api.showStore(data)
     .then(ui.onShowSuccess)
     .catch(ui.onShowFailure)
@@ -58,6 +67,7 @@ const onShowStore = e => {
 
 module.exports = {
   displayCreateForms,
+  displayUpdateForms,
   displaySearchForms,
   onSearchByName,
   onStoresIndex,

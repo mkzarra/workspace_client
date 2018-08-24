@@ -24,6 +24,7 @@ const onSignInSuccess = data => {
   $('#sign-in-form').hide()
   $('#sign-up').css('display', 'none')
   $('#sign-in').css('display', 'none')
+  $('#display-update-store').css('display', 'inline')
   $('#change-password').css('display', 'inline')
   $('#search-by-name').css('display', 'inline')
   $('#sign-out').css('display', 'inline')
@@ -52,6 +53,7 @@ const onChangePasswordFailure = err => {
 const onSignOutSuccess = () => {
   $('#sign-in').css('display', 'inline')
   $('#sign-up').css('display', 'inline')
+  $('#display-update-store').css('display', 'none')
   $('#change-password').css('display', 'none')
   $('.card').css('display', 'none')
   $('#display-create-forms').css('display', 'none')

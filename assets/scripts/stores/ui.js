@@ -53,7 +53,7 @@ const onCreateSuccess = data => {
 }
 
 const onUpdateSuccess = data => {
-  $('.clear-index').css('display', 'none')
+  $('#update-store').hide()
   $('#message').text(`${data.store.name} has been updated`)
   const storeHTML = (`
       <h5 class="card-title">${data.store.name}</h5>
@@ -67,7 +67,7 @@ const onUpdateSuccess = data => {
 }
 
 const onShowSuccess = data => {
-  $('.clear-index').css('display', 'none')
+  $('#search-by-address').hide()
   const storeHTML = (`
     <div class="clear-index">
       <h5 class="card-title">${data.store.name}</5>

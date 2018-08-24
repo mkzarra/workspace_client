@@ -2,20 +2,23 @@
 const storeData = require('../store')
 
 const renderAddressInfo = data => {
+  console.log(data)
+  console.log(storeData.data)
   const addressHTML = (`
-    <p class="card-text">${data.address.line_one}</p>
-    <p class="card-text">${data.address.line_two}</p>
-    <p class="card-text">${data.address.city}</p>
-    <p class="card-text">${data.address.state}</p>
-    <p class="card-text">${data.address.zip_code}</p>
+    <p class="card-text">${data.line_one}</p>
+    <p class="card-text">${data.line_two}</p>
+    <p class="card-text">${data.city}</p>
+    <p class="card-text">${data.state}</p>
+    <p class="card-text">${data.zip_code}</p>
   `)
   $('.card-body').append(addressHTML)
 }
 
 const createAddressSuccess = data => {
   $('#create-address').hide()
-  data = storeData.data
-  renderAddressInfo(data)
+  console.log(data.address)
+  storeData.data = data.address
+  renderAddressInfo(data.address)
 }
 
 const createAddressFailure = err => {
