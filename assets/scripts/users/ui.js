@@ -1,6 +1,6 @@
 'use strict'
 
-const store = require('../store')
+const storeData = require('../store')
 
 const clearFormFields = function (formId) {
   $(formId).each(function () {
@@ -20,7 +20,7 @@ const onSignUpFailure = err => {
 }
 
 const onSignInSuccess = data => {
-  store.user = data.user
+  storeData.user = data.user
   $('#sign-in-form').hide()
   $('#sign-up').css('display', 'none')
   $('#sign-in').css('display', 'none')
@@ -28,7 +28,8 @@ const onSignInSuccess = data => {
   $('#search-by-name').css('display', 'inline')
   $('#sign-out').css('display', 'inline')
   $('#search-by-address').css('display', 'block')
-  $('.custom-select').css('display', 'block')
+  $('#display-create-forms').css('display', 'inline')
+  $('#display-address-form').css('display', 'inline')
   clearFormFields()
 }
 
@@ -53,11 +54,12 @@ const onSignOutSuccess = () => {
   $('#sign-up').css('display', 'inline')
   $('#change-password').css('display', 'none')
   $('.card').css('display', 'none')
-  $('.custom-select').css('display', 'none')
+  $('#display-create-forms').css('display', 'none')
   $('#sign-out').css('display', 'none')
   $('#search-by-name').css('display', 'none')
   $('#search-by-address').css('display', 'none')
-  store.user = null
+  $('#display-address-form').css('display', 'none')
+  storeData.user = null
 }
 
 const onSignOutFailure = err => {

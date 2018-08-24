@@ -2,6 +2,7 @@
 
 const userEvents = require('./users/events')
 const storeEvents = require('./stores/events')
+const addressEvents = require('./addresses/events')
 
 $(() => {
   $('#sign-up').on('click', userEvents.displaySignUpForm)
@@ -13,4 +14,7 @@ $(() => {
   $('#sign-out').on('click', userEvents.onSignOut)
   $('#search-by-name').on('submit', storeEvents.onSearchByName)
   $('#search-by-address').on('submit', storeEvents.onShowStore)
+  $('#create-store').on('submit', storeEvents.onCreateStore)
+  $('#create-address').on('submit', addressEvents.onCreateAddress)
+  $('#display-create-forms').on('click', storeEvents.displayCreateForms)
 })

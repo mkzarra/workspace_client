@@ -16,7 +16,7 @@
         <h1 id="title" class="branding">Remote Cafe</h1>
         <!-- search bar starts -->
           <form id="search-by-name" class="form-inline" style="display: none;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input name="store[name]" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <!-- search bar ends -->
@@ -82,10 +82,9 @@
       
       <!-- start card -->
       <div style="display: none;" class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
+          
           <a href="#" class="btn btn-primary">Save</a>
         </div>
       </div>
@@ -170,6 +169,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
+      <button type="button" class="btn btn-primary" id="display-address-form" style="display: none;">Find a Store</button>
       <!-- end address search -->
 
       <!-- start create store -->
@@ -177,52 +177,59 @@
       <!-- start name input -->
       <div id="create-name" class="form-row">
         <label for="inputName">Name</label>
-        <input type="text" class="form-control" id="inputName">
+        <input name="store[name]" type="text" class="form-control" id="inputName">
       </div>
       <!-- end name input -->
 
+      <!-- start schedule input -->
+      <div id="create-schedule" class="form-row">
+        <label for="inputSchedule">Hours</label>
+        <input name="store[schedule]" type="text" class="form-control" id="inputSchedule">
+      </div>
+      <!-- end schedule input -->
+
       <!-- start select wifi menu -->
       <div id="create-wifi" class="form-group">
-      <select id="wifi" class="custom-select">
+      <select name="store[wifi]" id="wifi" class="custom-select">
         <option selected>Is wifi available here?</option>
-        <option value="1">Yes</option>
-        <option value="2">No</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
       </select>
       </div>
       <!-- end select menu -->
 
       <!-- start select menu -->
       <div id="create-seating" class="form-group">
-      <select id="seating" class="custom-select">
+      <select name="store[seating]" id="seating" class="custom-select">
         <option selected>Available seating</option>
-        <option value="1">Sparse</option>
-        <option value="2">Limited</option>
-        <option value="3">Adiquate</option>
-        <option value="4">Plenty</option>
-        <option value="5">Guaranteed</option>
+        <option value="Sparse">Sparse</option>
+        <option value="Limited">Limited</option>
+        <option value="Adiquate">Adiquate</option>
+        <option value="Plenty">Plenty</option>
+        <option value="Guaranteed">Guaranteed</option>
       </select>
       </div>
       <!-- end select menu -->
 
       <!-- start select menu -->
       <div id="create-atmosphere" class="form-group">
-      <select id="atmosphere" class="custom-select">
+      <select name="store[atmosphere]" id="atmosphere" class="custom-select">
         <option selected>Atmosphere</option>
-        <option value="1">Private</option>
-        <option value="2">Vibrant</option>
-        <option value="3">Peaceful</option>
+        <option value="Private">Private</option>
+        <option value="Vibrant">Vibrant</option>
+        <option value="Peaceful">Peaceful</option>
       </select>
       </div>
       <!-- end select menu -->
       <!-- start select menu -->
       <div id="create-outlets" class="form-group">
-      <select id="outlets" class="custom-select">
+      <select name="store[outlets]" id="outlets" class="custom-select">
         <option selected>Available power outlets</option>
-        <option value="1">None</option>
-        <option value="2">Sparse</option>
-        <option value="3">Limited</option>
-        <option value="4">Plenty</option>
-        <option value="5">Guaranteed</option>
+        <option value="None">None</option>
+        <option value="Sparse">Sparse</option>
+        <option value="Limited">Limited</option>
+        <option value="Plenty">Plenty</option>
+        <option value="Guaranteed">Guaranteed</option>
       </select>
       </div>
       <!-- end select menu -->
@@ -230,31 +237,31 @@
       <div class="form-check">
         <h5 id="check-box-title">Restroom info</h5>
         <p id="checkbox-descriptor">Select all that apply</p>
-        <input class="form-check-input" type="checkbox" value="" id="clean">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="clean" id="clean">
         <label class="form-check-label" for="clean">
           Clean
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="large">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="large" id="large">
         <label class="form-check-label" for="large">
           Large
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="changing-station">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="changing station" id="changing-station">
         <label class="form-check-label" for="changing-station">
           Changing Table
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="gender-neutral">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="gender neutral" id="gender-neutral">
         <label class="form-check-label" for="gender-neutral">
           Gender neutral
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="single-stall">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="single stall" id="single-stall">
         <label class="form-check-label" for="single-stall">
           Single stall
         </label>
@@ -263,26 +270,27 @@
       <!-- end restroom checkboxes -->
       <button type="submit" id="create-button" class="btn btn-primary">Post</button>
       </form>
+      <button type="button" id="display-create-forms" class="btn btn-primary" style="display:none;">Add a Store</button>
       <!-- end create store -->
 
       <!-- start add address -->
             <form id="create-address" class="form-block" style="display: none;">
               <div class="form-group">
                 <label for="inputAddressCreate">Address</label>
-                <input type="text" class="form-control" id="inputAddressCreate" placeholder="1234 Main St">
+                <input name="address[line_one]" type="text" class="form-control" id="inputAddressCreate" placeholder="1234 Main St">
               </div>
               <div class="form-group">
                 <label for="inputAddress2Create">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2Create" placeholder="Apartment, studio, or floor">
+                <input name="address[line_two]" type="text" class="form-control" id="inputAddress2Create" placeholder="Apartment, studio, or floor">
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputCityCreate">City</label>
-                  <input type="text" class="form-control" id="inputCityCreate">
+                  <input name="address[city]" type="text" class="form-control" id="inputCityCreate">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputStateCreate">State</label>
-                  <select id="inputStateCreate" class="form-control">
+                  <select name="address[state]" id="inputStateCreate" class="form-control">
                     <option selected>Choose</option>
                     <option>AL</option>
                     <option>AK</option>
@@ -339,11 +347,19 @@
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputZipCreate">Zip</label>
-                  <input type="text" class="form-control" id="inputZipCreate">
+                  <input name="address[zip_code]" type="text" class="form-control" id="inputZipCreate">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Add</button>
             </form>
       <!-- end add address -->
+
+      <!-- start update store -->
+      <div id="render-update-forms">
+
+      </div>
+      <button type="submit" id="update-store"
+      <!-- end update store -->
+
     </body>
 </html>

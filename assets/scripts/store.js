@@ -1,6 +1,6 @@
 'use strict'
 
-const store = {
+const storeData = {
 }
 
-module.exports = store
+module.exports = storeData

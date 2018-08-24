@@ -1,5 +1,5 @@
 const config = require('../config')
-const store = require('../store')
+const storeData = require('../store')
 
 const signUp = data => {
   return $.ajax({
@@ -22,7 +22,7 @@ const changePassword = data => {
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     },
     data
   })
@@ -33,7 +33,7 @@ const signOut = () => {
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     }
   })
 }

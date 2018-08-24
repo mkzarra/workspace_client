@@ -1,5 +1,5 @@
 'use strict'
-const store = require('../../scripts/store')
+const storeData = require('../../scripts/store')
 const config = require('../../scripts/config')
 
 const searchByName = data => {
@@ -7,9 +7,9 @@ const searchByName = data => {
     url: config.apiUrl + '/stores',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     },
-    data: data.stores
+    data: data.store
   })
 }
 
@@ -18,7 +18,7 @@ const storesIndex = () => {
     url: config.apiUrl + '/stores',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     }
   })
 }
@@ -28,7 +28,7 @@ const createStore = data => {
     url: config.apiUrl + '/stores',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     },
     data
   })
@@ -39,7 +39,7 @@ const updateStore = data => {
     url: config.apiUrl + '/stores/' + data.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     },
     data
   })
@@ -50,7 +50,7 @@ const showStore = data => {
     url: config.apiUrl + '/stores' + data,
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + storeData.user.token
     },
     data
   })

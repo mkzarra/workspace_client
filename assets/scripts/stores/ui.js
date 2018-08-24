@@ -1,24 +1,30 @@
 'use strict'
+const storeData = require('../store')
 
 const renderStores = data => {
   $('.clear-index').css('display', 'none')
   data.stores.forEach(stores => {
     const storeHTML = (`
-    <div class="clear-index">
-      <li class="store-name">${stores.name}</li>
-      <li>${stores.wifi}</li>
-      <li>${stores.outlets}</li>
-      <li>${stores.restrooms}</li>
-      <li>${stores.seating}</li>
-      <li>${stores.atmosphere}</li>
-    </div><br>
+    <h5 class="card-title">${stores.name}</h5>
+      <p class="card-text">${stores.wifi}</p>
+      <p class="card-text">${stores.outlets}</p>
+      <p class="card-text">${stores.restrooms}</p>
+      <p class="card-text">${stores.seating}</p>
+      <p class="card-text">${stores.atmosphere}</p>
     `)
-    $('store-index').append(storeHTML)
+    $('.card').css('display', 'block')
+    $('.card-body').append(storeHTML)
   })
 }
 
 const onSearchByNameSuccess = data => {
+  $('#message').css('display', 'none')
   renderStores(data)
+}
+
+const onSearchByNameFailure = err => {
+  $('#message').text(`Search failed: ${err}`)
+  console.error(err)
 }
 
 const onGetFailure = err => {
@@ -31,50 +37,47 @@ const onStoresIndexSuccess = data => {
 }
 
 const onCreateSuccess = data => {
-  $('.clear-index').css('display', 'none')
+  $('#create-store').hide()
+  $('#create-address').css('display', 'block')
   $('#message').text(`Thank you for adding ${data.store.name}`)
   const storeHTML = (`
-    <div class="clear-index">
-      <li class="store-name">${data.store.name}</li>
-      <li>${data.store.wifi}</li>
-      <li>${data.store.outlets}</li>
-      <li>${data.store.restrooms}</li>
-      <li>${data.store.seating}</li>
-      <li>${data.store.atmosphere}</li>
-    </div><br>
+      <h5 class="card-title">${data.store.name}</h5>
+      <p class="card-text">${data.store.wifi}</p>
+      <p class="card-text">${data.store.outlets}</p>
+      <p class="card-text">${data.store.restrooms}</p>
+      <p class="card-text">${data.store.seating}</p>
+      <p class="card-text">${data.store.atmosphere}</p>
   `)
-  $('#store-index').append(storeHTML)
+  $('.card-body').append(storeHTML)
+  storeData.data = data.store.id
 }
 
 const onUpdateSuccess = data => {
   $('.clear-index').css('display', 'none')
   $('#message').text(`${data.store.name} has been updated`)
   const storeHTML = (`
-    <div class="clear-index">
-      <li class="store-name">${data.store.name}</li>
-      <li>${data.store.wifi}</li>
-      <li>${data.store.outlets}</li>
-      <li>${data.store.restrooms}</li>
-      <li>${data.store.seating}</li>
-      <li>${data.store.atmosphere}</li>
-    </div><br>
+      <h5 class="card-title">${data.store.name}</h5>
+      <p class="card-text">${data.store.wifi}</p>
+      <p class="card-text">${data.store.outlets}</p>
+      <p class="card-text">${data.store.restrooms}</p>
+      <p class="card-text">${data.store.seating}</p>
+      <p class="card-text">${data.store.atmosphere}</p>
   `)
-  $('#store-index').append(storeHTML)
+  $('.card-body').append(storeHTML)
 }
 
 const onShowSuccess = data => {
   $('.clear-index').css('display', 'none')
   const storeHTML = (`
     <div class="clear-index">
-      <li class="store-name">${data.store.name}</li>
-      <li>${data.store.wifi}</li>
-      <li>${data.store.outlets}</li>
-      <li>${data.store.restrooms}</li>
-      <li>${data.store.seating}</li>
-      <li>${data.store.atmosphere}</li>
-    </div><br>
+      <h5 class="card-title">${data.store.name}</5>
+      <p class="card-text">${data.store.wifi}</p>
+      <p class="card-text">${data.store.outlets}</p>
+      <p class="card-text">${data.store.restrooms}</p>
+      <p class="card-text">${data.store.seating}</p>
+      <p class="card-text">${data.store.atmosphere}</p>
   `)
-  $('#store-index').append(storeHTML)
+  $('.card-body').append(storeHTML)
 }
 
 module.exports = {

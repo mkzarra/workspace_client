@@ -1,12 +1,18 @@
 'use strict'
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
+const ui = require('./ui')
 
-const addressToStore = data => {
-  console.log(data)
-  if (data.store.address_id === data.address.id) {
-    // show store with this address_id
-  }
+const displayCreateForms = e => {
+  e.preventDefault()
+  $('#create-store').css('display', 'inline-block')
+  $('#change-password').css('display', 'none')
+  $('#change-password-form').hide()
+  $('#search-by-address').hide()
+}
+
+const displaySearchForms = e => {
+  $('#search-by-address').css('display', 'inline-block')
 }
 
 const onSearchByName = e => {
@@ -27,7 +33,7 @@ const onStoresIndex = e => {
 const onCreateStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  api.createStores(data)
+  api.createStore(data)
     .then(ui.onCreateSuccess)
     .catch(ui.onCreateFailure)
 }
@@ -43,7 +49,6 @@ const onUpdateStore = e => {
 const onShowStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  debugger
   console.log(data)
   // match store.id with address to show store
   api.showStore(data)
@@ -52,6 +57,8 @@ const onShowStore = e => {
 }
 
 module.exports = {
+  displayCreateForms,
+  displaySearchForms,
   onSearchByName,
   onStoresIndex,
   onCreateStore,
