@@ -6,6 +6,7 @@ const searchByName = data => {
   return $.ajax({
     url: config.apiUrl + '/stores',
     method: 'GET',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + storeData.user.token
     },
@@ -16,6 +17,7 @@ const searchByName = data => {
 const storesIndex = () => {
   return $.ajax({
     url: config.apiUrl + '/stores',
+    crossDomain: true,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + storeData.user.token
@@ -27,6 +29,7 @@ const createStore = data => {
   return $.ajax({
     url: config.apiUrl + '/stores',
     method: 'POST',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + storeData.user.token
     },
@@ -38,6 +41,7 @@ const updateStore = data => {
   return $.ajax({
     url: config.apiUrl + '/stores/' + data.id,
     method: 'PATCH',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + storeData.user.token
     },
@@ -49,6 +53,7 @@ const showStore = data => {
   return $.ajax({
     url: config.apiUrl + '/addresses/' + data,
     method: 'GET',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + storeData.user.token
     },

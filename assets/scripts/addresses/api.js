@@ -7,6 +7,7 @@ const createAddress = data => {
   return $.ajax({
     url: `${config.apiUrl}/addresses`,
     method: 'POST',
+    crossDomain: true,
     headers: {
       Authorization: `Token token=${storeData.user.token}`
     },
@@ -18,6 +19,7 @@ const updateAddress = data => {
   return $.ajax({
     url: `${config.apiUrl}/addresses/${data.id}`,
     method: 'PATCH',
+    crossDomain: true,
     headers: {
       Authorization: `Token token=${storeData.user.token}`
     },
