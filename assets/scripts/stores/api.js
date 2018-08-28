@@ -75,11 +75,23 @@ const saveStoreToUser = data => {
   })
 }
 
+const deleteStore = id => {
+  return $.ajax({
+    url: `${config.apiUrl}/stores/${id}`,
+    method: 'DELETE',
+    crossDomain: true,
+    headers: {
+      Authorization: `Token token=${storeData.user.token}`
+    }
+  })
+}
+
 module.exports = {
   searchByName,
   storesIndex,
   createStore,
   updateStore,
   showStore,
-  saveStoreToUser
+  saveStoreToUser,
+  deleteStore
 }

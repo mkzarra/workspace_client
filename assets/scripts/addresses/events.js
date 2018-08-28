@@ -24,6 +24,7 @@ const onUpdateAddress = e => {
 const onShowAddress = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data)
   api.showAddress(data)
     .then(ui.showAddressSuccess)
     .then(ui.showAddressFailure)

@@ -15,8 +15,13 @@ const renderStores = data => {
       <p class="card-text">${stores.restrooms}</p>
       <p class="card-text">${stores.seating}</p>
       <p class="card-text">${stores.atmosphere}</p>
-      <form id="save-${stores.id}" value="${stores.id}">
+      <form id="save-${stores.id}">
+      <input type="number" name="store[id]" value="${stores.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <form id="remove-${stores.id}">
+      <input type="number" name="store[id]" value="${stores.id}" readonly>
+      <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
@@ -59,8 +64,13 @@ const onCreateSuccess = data => {
       <p class="card-text">${store.restrooms}</p>
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
-      <form id="save-${store.id}" value="${store.id}">
+      <form id="save-${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <form id="remove-${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
@@ -84,8 +94,12 @@ const onUpdateSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input value="${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <form id="remove-${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
@@ -108,8 +122,13 @@ const onShowSuccess = data => {
       <p class="card-text">${store.restrooms}</p>
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
-      <form id="save-${store.id}" value="${store.id}">
+      <form id="save-${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <form id="remove-${store.id}">
+      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
@@ -127,6 +146,15 @@ const onSaveFailure = err => {
   $('#message').text(`could not save. error is ${err}`)
 }
 
+const onDeleteSuccess = () => {
+  $('.card').css('display', 'none')
+  $('#message').text(`Successfully removed a store`)
+}
+
+const onDeleteFailure = err => {
+  $('#message').text(`could not remove. ${err}`)
+}
+
 module.exports = {
   onSearchByNameSuccess,
   onSearchByNameFailure,
@@ -136,5 +164,7 @@ module.exports = {
   onUpdateSuccess,
   onShowSuccess,
   onSaveSuccess,
-  onSaveFailure
+  onSaveFailure,
+  onDeleteSuccess,
+  onDeleteFailure
 }

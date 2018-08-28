@@ -74,6 +74,14 @@ const onSaveStoreToUser = e => {
     .catch(ui.onSaveFailure)
 }
 
+const onDeleteStore = e => {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  api.deleteStore(data.store.id)
+    .then(ui.onDeleteSuccess)
+    .catch(ui.onDeleteFailure)
+}
+
 module.exports = {
   displayCreateForms,
   displayUpdateForms,
@@ -83,5 +91,6 @@ module.exports = {
   onCreateStore,
   onUpdateStore,
   onShowStore,
-  onSaveStoreToUser
+  onSaveStoreToUser,
+  onDeleteStore
 }
