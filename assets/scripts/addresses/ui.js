@@ -1,5 +1,6 @@
 'use strict'
 const storeData = require('../store')
+const storeEvents = require('../stores/events')
 
 const renderAddressInfo = data => {
   console.log(data)
@@ -34,9 +35,22 @@ const onUpdateFailure = err => {
   $('#message').text(`Could not update this address: ${err}`)  
 }
 
+const showAddressSuccess = data => {
+  storeData.data = data.address
+  console.log(storeData.data)
+  $('#search-by-address').hide()
+  storeEvents.onShowStore(storeData.data)
+}
+
+const showAddressFailure = err => {
+  $('#message').text(`could execute. ${err}`)
+}
+
 module.exports = {
   createAddressSuccess,
   createAddressFailure,
   onUpdateSuccess,
-  onUpdateFailure
+  onUpdateFailure,
+  showAddressSuccess,
+  showAddressFailure
 }

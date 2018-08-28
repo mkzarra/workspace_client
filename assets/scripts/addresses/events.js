@@ -21,7 +21,16 @@ const onUpdateAddress = e => {
     .catch(ui.onUpdateFailure)
 }
 
+const onShowAddress = e => {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  api.showAddress(data)
+    .then(ui.showAddressSuccess)
+    .then(ui.showAddressFailure)
+}
+
 module.exports = {
   onCreateAddress,
-  onUpdateAddress
+  onUpdateAddress,
+  onShowAddress
 }

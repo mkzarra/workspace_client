@@ -2,7 +2,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 .actions {
-  background: #ffe18f;
+  background: #ffda76;
 }
 
 .branding {
@@ -13,6 +13,17 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   margin: auto;
 }
 
+.card {
+  align-self: center;
+  text-align: center;
+  align-content: center;
+  background: #e2455c;
+  margin: 2em;
+  padding: 1em;
+}
+
 #content {
   background-color: #fae6b0;
+  margin: auto;
+  align-self: center;
 }

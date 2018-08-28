@@ -50,12 +50,26 @@ const updateStore = data => {
 }
 
 const showStore = data => {
+  console.log(data)
+  debugger
   return $.ajax({
-    url: config.apiUrl + '/addresses/' + data,
+    url: config.apiUrl + '/stores/' + data.store_id,
     method: 'GET',
     crossDomain: true,
     headers: {
       Authorization: 'Token token=' + storeData.user.token
+    },
+    data
+  })
+}
+
+const saveStoreToUser = data => {
+  return $.ajax({
+    url: `${config.apiUrl}/stores`,
+    method: 'POST',
+    crossDomain: true,
+    headers: {
+      Authorization: `Token token=${storeData.user.token}`
     },
     data
   })
@@ -66,5 +80,6 @@ module.exports = {
   storesIndex,
   createStore,
   updateStore,
-  showStore
+  showStore,
+  saveStoreToUser
 }
