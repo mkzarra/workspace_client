@@ -2,6 +2,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const storeData = require('../store')
 
 const displayCreateForms = e => {
   e.preventDefault()
@@ -58,11 +59,27 @@ const onShowStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
   console.log(data)
-  console.log(data.address.store_id)
+  console.log(data.address)
   // get store_id from address to show store
   api.showStore(data)
     .then(ui.onShowSuccess)
     .catch(ui.onShowFailure)
+}
+
+const onSaveStoreToUser = e => {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  api.saveStoreToUser(data)
+    .then(ui.onSaveSuccess)
+    .catch(ui.onSaveFailure)
+}
+
+const onDeleteStore = e => {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  api.deleteStore(data.stores_user.id)
+    .then(ui.onDeleteSuccess)
+    .catch(ui.onDeleteFailure)
 }
 
 module.exports = {
@@ -73,5 +90,7 @@ module.exports = {
   onStoresIndex,
   onCreateStore,
   onUpdateStore,
-  onShowStore
+  onShowStore,
+  onSaveStoreToUser,
+  onDeleteStore
 }

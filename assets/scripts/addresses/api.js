@@ -27,7 +27,20 @@ const updateAddress = data => {
   })
 }
 
+const showAddress = data => {
+  return $.ajax({
+    url: `${config.apiUrl}/addresses/`,
+    method: 'GET',
+    crossDomain: true,
+    headers: {
+      Authorization: `Token token=${storeData.user.token}`
+    },
+    data: data.address
+  })
+}
+
 module.exports = {
   createAddress,
-  updateAddress
+  updateAddress,
+  showAddress
 }
