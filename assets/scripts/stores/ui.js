@@ -16,11 +16,11 @@ const renderStores = data => {
       <p class="card-text">${stores.seating}</p>
       <p class="card-text">${stores.atmosphere}</p>
       <form id="save-${stores.id}">
-      <input type="number" name="store[id]" value="${stores.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${stores.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${stores.id}">
-      <input type="number" name="store[id]" value="${stores.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${stores.id}" readonly>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
@@ -65,11 +65,11 @@ const onCreateSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
@@ -94,11 +94,11 @@ const onUpdateSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
@@ -123,11 +123,11 @@ const onShowSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="store[id]" value="${store.id}" readonly>
+      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>

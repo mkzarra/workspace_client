@@ -65,7 +65,7 @@ const showStore = data => {
 
 const saveStoreToUser = data => {
   return $.ajax({
-    url: `${config.apiUrl}/stores`,
+    url: `${config.apiUrl}/stores_users`,
     method: 'POST',
     crossDomain: true,
     headers: {
@@ -77,7 +77,7 @@ const saveStoreToUser = data => {
 
 const deleteStore = id => {
   return $.ajax({
-    url: `${config.apiUrl}/stores/${id}`,
+    url: `${config.apiUrl}/stores_users/${id}`,
     method: 'DELETE',
     crossDomain: true,
     headers: {
