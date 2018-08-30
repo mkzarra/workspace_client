@@ -3,6 +3,7 @@
 const userEvents = require('./users/events')
 const storeEvents = require('./stores/events')
 const addressEvents = require('./addresses/events')
+const storeUi = require('./stores/ui')
 
 $(() => {
   $('#sign-up').on('click', userEvents.displaySignUpForm)
@@ -19,6 +20,6 @@ $(() => {
   $('#display-create-forms').on('click', storeEvents.displayCreateForms)
   $('#display-update-store').on('click', storeEvents.displayUpdateForms)
   $('#update-store').on('submit', storeEvents.onUpdateStore)
-  $("form[id|='save']").on('submit', storeEvents.onSaveStoreToUser)
-  $("form[id|='remove']").on('submit', storeEvents.onDeleteStore)
+  storeUi.submitSave()
+  storeUi.submitDelete()
 })

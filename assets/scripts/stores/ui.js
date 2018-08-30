@@ -1,26 +1,30 @@
 'use strict'
 const storeData = require('../store')
-const addressUi = require('../addresses/ui')
+const events = require('./events')
 
 const renderStores = data => {
   $('.form-block').hide()
   $('.form-inline').hide()
-  data.stores.forEach(stores => {
+  data.stores.forEach(store => {
     const storeHTML = (`
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-    <h5 class="card-title">${stores.name}</h5>
-      <p class="card-text">${stores.wifi}</p>
-      <p class="card-text">${stores.outlets}</p>
-      <p class="card-text">${stores.restrooms}</p>
-      <p class="card-text">${stores.seating}</p>
-      <p class="card-text">${stores.atmosphere}</p>
-      <form id="save-${stores.id}">
-      <input type="number" name="stores_user[id]" value="${stores.id}" readonly>
+    <h5 class="card-title">${store.name}</h5>
+      <p class="card-text">${store.wifi}</p>
+      <p class="card-text">${store.outlets}</p>
+      <p class="card-text">${store.restrooms}</p>
+      <p class="card-text">${store.seating}</p>
+      <p class="card-text">${store.atmosphere}</p>
+      <form id="save-${store.id}">
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
-      <form id="remove-${stores.id}">
-      <input type="number" name="stores_user[id]" value="${stores.id}" readonly>
+      <form id="remove-${store.id}">
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
@@ -28,7 +32,6 @@ const renderStores = data => {
     `)
     $('.card-content').append(storeHTML)
   })
-  addressUi.renderAddressInfo(data)
 }
 
 const onSearchByNameSuccess = data => {
@@ -65,18 +68,21 @@ const onCreateSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
     `)
   $('.card-content').append(storeHTML)
-  addressUi.renderAddressInfo(data)
   storeData.data = data.store.id
 }
 
@@ -94,18 +100,22 @@ const onUpdateSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
     `)
   $('.card-content').append(storeHTML)
-  addressUi.renderAddressInfo(data)
+  
 }
 
 const onShowSuccess = data => {
@@ -123,18 +133,21 @@ const onShowSuccess = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form id="save-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Save</button>
       </form>
       <form id="remove-${store.id}">
-      <input type="number" name="stores_user[id]" value="${store.id}" readonly>
+      <select name="stores_user[id]"  display:none>
+      <option type="number" value="${store.id}"></option>
+      </select>
       <button type="submit" class="btn btn-primary">Remove</button>
       </form>
     </div>
     </div>
     `)
   $('.card-content').append(storeHTML)
-  addressUi.renderAddressInfo(data)
 }
 
 const onSaveSuccess = data => {
@@ -155,6 +168,18 @@ const onDeleteFailure = err => {
   $('#message').text(`could not remove. ${err}`)
 }
 
+const submitSave = data => {
+  storeData.data = data.store
+  console.log(storeData.data)
+  $(`#save-${data.store.id}`).on('submit', events.onSaveStoreToUser)
+}
+
+const submitDelete = data => {
+  storeData.data = data.store
+  console.log(data.store)
+  $(`#remove-${data.store.id}`).on('submit', events.onDeleteStore)
+}
+
 module.exports = {
   onSearchByNameSuccess,
   onSearchByNameFailure,
@@ -166,5 +191,7 @@ module.exports = {
   onSaveSuccess,
   onSaveFailure,
   onDeleteSuccess,
-  onDeleteFailure
+  onDeleteFailure,
+  submitDelete,
+  submitSave
 }

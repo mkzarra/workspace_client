@@ -77,7 +77,7 @@ const onSaveStoreToUser = e => {
 const onDeleteStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  api.deleteStore(data.stores_user.id)
+  api.deleteStore(data)
     .then(ui.onDeleteSuccess)
     .catch(ui.onDeleteFailure)
 }
