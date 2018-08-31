@@ -3,6 +3,7 @@ const storeData = require('../../scripts/store')
 const config = require('../../scripts/config')
 
 const searchByName = data => {
+  console.log(storeData.user.id)
   return $.ajax({
     url: config.apiUrl + '/stores',
     method: 'GET',
@@ -16,7 +17,7 @@ const searchByName = data => {
 
 const storesIndex = () => {
   return $.ajax({
-    url: config.apiUrl + '/stores',
+    url: config.apiUrl + '/stores_users',
     crossDomain: true,
     method: 'GET',
     headers: {
@@ -50,8 +51,6 @@ const updateStore = data => {
 }
 
 const showStore = data => {
-  console.log(data)
-  debugger
   return $.ajax({
     url: config.apiUrl + '/stores/' + data.store_id,
     method: 'GET',
@@ -71,7 +70,12 @@ const saveStoreToUser = data => {
     headers: {
       Authorization: `Token token=${storeData.user.token}`
     },
-    data
+    data: {
+      stores_user: {
+        user_id: storeData.user.id,
+        store_id: data.store_id
+      }
+    }
   })
 }
 
