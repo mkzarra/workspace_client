@@ -76,8 +76,9 @@ const onSaveStoreToUser = e => {
 
 const onDeleteStore = e => {
   e.preventDefault()
-  const data = getFormFields(e.target)
-  api.deleteStore(data)
+  const joinID = getFormFields(e.target) // $(e.target).closest('div').attr('data-id')
+  console.log(joinID)
+  api.deleteStore(joinID)
     .then(ui.onDeleteSuccess)
     .catch(ui.onDeleteFailure)
 }

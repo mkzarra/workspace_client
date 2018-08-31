@@ -4,6 +4,7 @@ const storeData = require('../store')
 const renderStores = data => {
   $('.form-block').hide()
   $('.form-inline').hide()
+  $('#search-by-name').show()
   data.stores.forEach(store => {
     const storeHTML = (`
     <div class="card" style="width: 18rem;">
@@ -15,16 +16,17 @@ const renderStores = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form class="save-store" id="store-id-${store.id}">
-      <button class="save-store" name="stores_user[store_id]" type="submit" class="btn btn-primary">Save</button>
+      <button class="save-store" name="stores_user[store_id]" value="${store.id} type="submit" class="btn btn-primary">Save</button>
       </form>
       <form class="remove-store">
-      <button type="submit" name="stores_user[store_id]" class="btn btn-primary">Remove</button>
+      <div data-id="${store.id}">
+      <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
+      </div>
       </form>
     </div>
     </div>
     `)
     $('.card-content').append(storeHTML)
-    $('button').val(store.id)
     console.log(store.id)
   })
 }
@@ -95,9 +97,9 @@ const onUpdateSuccess = data => {
       <p class="card-text">${store.restrooms}</p>
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
-      <form id="save-" + ${store.id} class="save-store">
+      <form id="save-${store.id}" class="save-store">
       <input type="submit" value=${store.id}> 
-      <select name="stores_user +" ${store.id}  style="display:none">
+      <select name="stores_user${store.id}"  style="display:none">
       <option  selected></option>
       </select>
       <button type="submit" class="btn btn-primary">Save</button>
@@ -149,8 +151,11 @@ const onShowSuccess = data => {
 }
 
 const onSaveSuccess = data => {
-  storeData.data = data.storeUser
-  $('#message').text(`You have saved ${data.store.name} to your stores`)
+  storeData.data = data.stores_user
+  $('.card-content').css('display', 'none')
+  $('#search-by-name').css('display', 'inline')
+  console.log(data)
+  $('#message').text(`You have saved ${data.store_id} to your stores`)
 }
 
 const onSaveFailure = err => {
@@ -158,7 +163,9 @@ const onSaveFailure = err => {
 }
 
 const onDeleteSuccess = () => {
-  $('.card').css('display', 'none')
+  $('.card-content').css('display', 'none')
+  $('#search-by-name').css('display', 'inline')
+  console.log('things happened')
   $('#message').text(`Successfully removed a store`)
 }
 

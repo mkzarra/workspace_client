@@ -79,9 +79,9 @@ const saveStoreToUser = data => {
   })
 }
 
-const deleteStore = id => {
+const deleteStore = joinID => {
   return $.ajax({
-    url: `${config.apiUrl}/stores_users/${id}`,
+    url: `${config.apiUrl}/stores_users/${joinID}`,
     method: 'DELETE',
     crossDomain: true,
     headers: {

@@ -24,6 +24,7 @@ const onSignInSuccess = data => {
   $('#sign-in-form').hide()
   $('#sign-up').css('display', 'none')
   $('#sign-in').css('display', 'none')
+  $('#my-stores').css('display', 'inline')
   $('#display-update-store').css('display', 'inline')
   $('#change-password').css('display', 'inline')
   $('#search-by-name').css('display', 'inline')
