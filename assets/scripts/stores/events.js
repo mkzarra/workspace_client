@@ -69,7 +69,7 @@ const onShowStore = e => {
 const onSaveStoreToUser = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  api.saveStoreToUser(data)
+  api.saveStoreToUser(data.stores_user)
     .then(ui.onSaveSuccess)
     .catch(ui.onSaveFailure)
 }
