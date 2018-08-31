@@ -3,8 +3,6 @@ const storeData = require('../store')
 const storeEvents = require('../stores/events')
 
 const renderAddressInfo = data => {
-  console.log(data)
-  console.log(storeData.data)
   const addressHTML = (`
     <p class="card-text">${data.line_one}</p>
     <p class="card-text">${data.line_two}</p>
@@ -17,7 +15,6 @@ const renderAddressInfo = data => {
 
 const createAddressSuccess = data => {
   $('#create-address').hide()
-  console.log(data.address)
   storeData.data = data.address
   renderAddressInfo(data.address)
 }
@@ -37,7 +34,6 @@ const onUpdateFailure = err => {
 
 const showAddressSuccess = data => {
   storeData.data = data.address
-  console.log(storeData.data)
   $('#search-by-address').hide()
   storeEvents.onShowStore(storeData.data)
 }

@@ -19,6 +19,7 @@ $(() => {
   $('#display-create-forms').on('click', storeEvents.displayCreateForms)
   $('#display-update-store').on('click', storeEvents.displayUpdateForms)
   $('#update-store').on('submit', storeEvents.onUpdateStore)
+  $('#my-stores').on('click', storeEvents.onStoresIndex)
   $(document).on('submit', 'form.save-store', storeEvents.onSaveStoreToUser)
   $(document).on('submit', 'form.remove-store', storeEvents.onDeleteStore)
 })
