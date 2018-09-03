@@ -17,7 +17,7 @@ const searchByName = data => {
 
 const storesIndex = () => {
   return $.ajax({
-    url: config.apiUrl + '/stores_users',
+    url: config.apiUrl + '/stores_user',
     crossDomain: true,
     method: 'GET',
     headers: {
@@ -64,7 +64,7 @@ const showStore = data => {
 
 const saveStoreToUser = data => {
   return $.ajax({
-    url: `${config.apiUrl}/stores_users`,
+    url: `${config.apiUrl}/stores_user`,
     method: 'POST',
     crossDomain: true,
     headers: {
@@ -72,6 +72,7 @@ const saveStoreToUser = data => {
     },
     data: {
       stores_user: {
+        id: data.id,
         user_id: storeData.user.id,
         store_id: data.store_id
       }
@@ -79,13 +80,19 @@ const saveStoreToUser = data => {
   })
 }
 
-const deleteStore = joinID => {
+const deleteStore = storeId => {
   return $.ajax({
-    url: `${config.apiUrl}/stores_users/${joinID}`,
+    url: `${config.apiUrl}/stores_user/`,
     method: 'DELETE',
     crossDomain: true,
     headers: {
       Authorization: `Token token=${storeData.user.token}`
+    },
+    data: {
+      stores_user: {
+        store_id: storeId,
+        user_id: storeData.user.id
+      }
     }
   })
 }

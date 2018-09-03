@@ -5,6 +5,7 @@ const renderStores = data => {
   $('.form-block').hide()
   $('.form-inline').hide()
   $('#search-by-name').show()
+  $('.card-content').empty()
   data.stores.forEach(store => {
     const storeHTML = (`
     <div class="card" style="width: 18rem;">
@@ -16,18 +17,17 @@ const renderStores = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form class="save-store" id="store-id-${store.id}">
-      <button class="save-store" name="stores_user[store_id]" value="${store.id} type="submit" class="btn btn-primary">Save</button>
+        <button class="save-store" name="stores_user[store_id]" value="${store.id}" type="submit" class="btn btn-primary">Save</button>
       </form>
-      <form class="remove-store">
-      <div data-id="${store.id}">
-      <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
+      <form class="remove-store" style="display: none;">
+        <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
+      </form>
+      <div class="store-div">
       </div>
-      </form>
     </div>
     </div>
     `)
     $('.card-content').append(storeHTML)
-    console.log(store.id)
   })
 }
 
@@ -38,7 +38,6 @@ const onSearchByNameSuccess = data => {
 
 const onSearchByNameFailure = err => {
   $('#message').text(`Search failed: ${err}`)
-  console.error(err)
 }
 
 const onGetFailure = err => {
@@ -47,7 +46,9 @@ const onGetFailure = err => {
 
 const onStoresIndexSuccess = data => {
   $('#message').css('display', 'none')
+  $('.save-store').css('display', 'none')
   renderStores(data)
+  $('.remove-store').css('display', 'block')
 }
 
 const onCreateSuccess = data => {
@@ -85,36 +86,6 @@ const onCreateSuccess = data => {
 }
 
 const onUpdateSuccess = data => {
-  let store = data.store
-  $('#update-store').hide()
-  $('#message').text(`${store.name} has been updated`)
-  const storeHTML = (`
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-    <h5 class="card-title">${store.name}</h5>
-      <p class="card-text">${store.wifi}</p>
-      <p class="card-text">${store.outlets}</p>
-      <p class="card-text">${store.restrooms}</p>
-      <p class="card-text">${store.seating}</p>
-      <p class="card-text">${store.atmosphere}</p>
-      <form id="save-${store.id}" class="save-store">
-      <input type="submit" value=${store.id}> 
-      <select name="stores_user${store.id}"  style="display:none">
-      <option  selected></option>
-      </select>
-      <button type="submit" class="btn btn-primary">Save</button>
-      </form>
-      <form id="remove${store.id}" class="remove-store">
-      <select name="stores_user[id]"  style="display:none">
-      <option  selected></option>
-      </select>
-      <button type="submit" class="btn btn-primary">Remove</button>
-      </form>
-    </div>
-    </div>
-    `)
-  $('.card-content').append(storeHTML)
-  $('option').val(store.id)
 }
 
 const onShowSuccess = data => {
@@ -152,9 +123,8 @@ const onShowSuccess = data => {
 
 const onSaveSuccess = data => {
   storeData.data = data.stores_user
-  $('.card-content').css('display', 'none')
   $('#search-by-name').css('display', 'inline')
-  console.log(data)
+  console.log(storeData.data)
   $('#message').text(`You have saved ${data.store_id} to your stores`)
 }
 
@@ -163,9 +133,7 @@ const onSaveFailure = err => {
 }
 
 const onDeleteSuccess = () => {
-  $('.card-content').css('display', 'none')
   $('#search-by-name').css('display', 'inline')
-  console.log('things happened')
   $('#message').text(`Successfully removed a store`)
 }
 
