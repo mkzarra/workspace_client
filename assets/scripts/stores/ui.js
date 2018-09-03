@@ -17,15 +17,131 @@ const renderStores = data => {
       <p class="card-text">${store.seating}</p>
       <p class="card-text">${store.atmosphere}</p>
       <form class="save-store" id="store-id-${store.id}">
-        <button class="save-store" name="stores_user[store_id]" value="${store.id}" type="submit" class="btn btn-primary">Save</button>
+        <button class="save-store btn btn-primary" name="stores_user[store_id]" value="${store.id}" type="submit" class="btn btn-primary">Save</button>
       </form>
-      <form class="remove-store" style="display: none;">
+        <button type="button" class="btn btn-primary display-update-form">Update</button>
+      <form class="remove-store" style="display:none;">
         <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
       </form>
-      <div class="store-div">
+    </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Update Store</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <!-- start update store -->
+            <form class="update-store form-block">
+              <!-- start name input -->
+              <div class="update-name form-row">
+                <label for="inputNameUpdate">Name</label>
+                <input name="store[name]" type="text" class="form-control inputNameUpdate">
+              </div>
+              <!-- end name input -->
+            
+              <!-- start schedule input -->
+              <div class="form-row update-schedule">
+                <label for="inputSchedule">Hours</label>
+                <input name="store[schedule]" type="text" class="form-control inputScheduleUpdate">
+              </div>
+              <!-- end schedule input -->
+            
+              <!-- start select wifi menu -->
+              <div class="form-group wifi-update">
+                <select name="store[wifi]" class="custom-select update-wifi">
+                  <option disabled selected>Is wifi available here?</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <!-- end select menu -->
+            
+              <!-- start select menu -->
+              <div class="form-group seating-update">
+                <select name="store[seating]" class="custom-select update-seating">
+                  <option disabled selected>Available seating</option>
+                  <option value="Sparse">Sparse</option>
+                  <option value="Limited">Limited</option>
+                  <option value="Adiquate">Adiquate</option>
+                  <option value="Plenty">Plenty</option>
+                  <option value="Guaranteed">Guaranteed</option>
+                </select>
+              </div>
+              <!-- end select menu -->
+            
+              <!-- start select menu -->
+              <div class="form-group atmosphere-update">
+                <select name="store[atmosphere]" class="custom-select update-atmosphere">
+                  <option disabled selected>Atmosphere</option>
+                  <option value="Private">Private</option>
+                  <option value="Vibrant">Vibrant</option>
+                  <option value="Peaceful">Peaceful</option>
+                </select>
+              </div>
+              <!-- end select menu -->
+              <!-- start select menu -->
+              <div class="form-group outlets-update">
+                <select name="store[outlets]" class="update-outlets custom-select">
+                  <option disabled selected>Available power outlets</option>
+                  <option value="None">None</option>
+                  <option value="Sparse">Sparse</option>
+                  <option value="Limited">Limited</option>
+                  <option value="Plenty">Plenty</option>
+                  <option value="Guaranteed">Guaranteed</option>
+                </select>
+              </div>
+              <!-- end select menu -->
+              <!-- start restroom checkboxes -->
+              <div class="form-check">
+                <h5 class="check-box-update">Restroom info</h5>
+                <input name="store[restrooms]" class="form-check-input clean-update" type="checkbox" value="clean">
+                <label class="form-check-label" for="clean-update">
+                  Clean
+                </label>
+              </div>
+              <div class="form-check">
+                <input name="store[restrooms]" class="form-check-input large-update" type="checkbox" value="large">
+                <label class="form-check-label" for="large-update">
+                  Large
+                </label>
+              </div>
+              <div class="form-check">
+                <input name="store[restrooms]" class="form-check-input changing-station-update" type="checkbox" value="changing station">
+                <label class="form-check-label" for="changing-station-update">
+                  Changing Table
+                </label>
+              </div>
+              <div class="form-check">
+                <input name="store[restrooms]" class="form-check-input gender-neutral-update" type="checkbox" value="gender neutral">
+                <label class="form-check-label" for="gender-neutral-update">
+                  Gender neutral
+                </label>
+              </div>
+              <div class="form-check">
+                <input name="store[restrooms]" class="form-check-input single-stall-update" type="checkbox" value="single stall">
+                <label class="form-check-label" for="single-stall-update">
+                  Single stall
+                </label>
+              </div>
+            
+              <!-- end restroom checkboxes -->
+              <button name="store[id]" value="${store.id}" type="submit" class="btn btn-primary update-button">Submit</button>
+            </form>
+      <!-- end update store -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-    </div>
+  </div>
+</div>
     `)
     $('.card-content').append(storeHTML)
   })
@@ -86,6 +202,7 @@ const onCreateSuccess = data => {
 }
 
 const onUpdateSuccess = data => {
+  $('#updateModal').modal('hide')
 }
 
 const onShowSuccess = data => {

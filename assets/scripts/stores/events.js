@@ -12,11 +12,7 @@ const displayCreateForms = e => {
 }
 
 const displayUpdateForms = e => {
-  e.preventDefault()
-  $('#update-store').css('display', 'inline-block')
-  $('#change-password').css('display', 'none')
-  $('#change-password-form').hide()
-  $('#search-by-address').hide()
+  $('#updateModal').modal('show')
 }
 
 const displaySearchForms = e => {
@@ -48,6 +44,7 @@ const onCreateStore = e => {
 const onUpdateStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data.store.id)
   api.updateStore(data)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)

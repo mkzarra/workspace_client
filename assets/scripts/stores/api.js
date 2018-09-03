@@ -40,7 +40,7 @@ const createStore = data => {
 
 const updateStore = data => {
   return $.ajax({
-    url: config.apiUrl + '/stores/' + data.id,
+    url: config.apiUrl + '/stores/' + data.store.id,
     method: 'PATCH',
     crossDomain: true,
     headers: {
