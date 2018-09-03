@@ -162,8 +162,8 @@ const onGetFailure = err => {
 
 const onStoresIndexSuccess = data => {
   $('#message').css('display', 'none')
-  $('.save-store').css('display', 'none')
   renderStores(data)
+  $('.save-store').css('display', 'none')
   $('.remove-store').css('display', 'block')
 }
 
