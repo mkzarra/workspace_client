@@ -11,6 +11,7 @@ const renderStores = data => {
     <div class="card" style="width: 18rem;">
     <div class="card-body">
     <h5 class="card-title">${store.name}</h5>
+      <p class="card-text">${store.schedule}</p>
       <p class="card-text">${store.wifi}</p>
       <p class="card-text">${store.outlets}</p>
       <p class="card-text">${store.restrooms}</p>
