@@ -2,7 +2,6 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-const storeData = require('../store')
 
 const displayCreateForms = e => {
   e.preventDefault()
@@ -13,11 +12,7 @@ const displayCreateForms = e => {
 }
 
 const displayUpdateForms = e => {
-  e.preventDefault()
-  $('#update-store').css('display', 'inline-block')
-  $('#change-password').css('display', 'none')
-  $('#change-password-form').hide()
-  $('#search-by-address').hide()
+  $('#updateModal').modal('show')
 }
 
 const displaySearchForms = e => {
@@ -33,7 +28,6 @@ const onSearchByName = e => {
 }
 
 const onStoresIndex = e => {
-  e.preventDefault()
   api.storesIndex()
     .then(ui.onStoresIndexSuccess)
     .catch(ui.onGetFailure)
@@ -50,6 +44,7 @@ const onCreateStore = e => {
 const onUpdateStore = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data.store.id)
   api.updateStore(data)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
@@ -69,6 +64,7 @@ const onShowStore = e => {
 const onSaveStoreToUser = e => {
   e.preventDefault()
   const data = getFormFields(e.target)
+  console.log(data)
   api.saveStoreToUser(data.stores_user)
     .then(ui.onSaveSuccess)
     .catch(ui.onSaveFailure)
@@ -76,9 +72,9 @@ const onSaveStoreToUser = e => {
 
 const onDeleteStore = e => {
   e.preventDefault()
-  const joinID = getFormFields(e.target) // $(e.target).closest('div').attr('data-id')
-  console.log(joinID)
-  api.deleteStore(joinID)
+  const data = getFormFields(e.target)
+  api.deleteStore(data.stores_user.store_id)
+    .then(render => onStoresIndex(render))
     .then(ui.onDeleteSuccess)
     .catch(ui.onDeleteFailure)
 }
