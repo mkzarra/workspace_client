@@ -57,6 +57,7 @@ const onSignOutSuccess = () => {
   $('#display-update-store').css('display', 'none')
   $('#change-password').css('display', 'none')
   $('.card').css('display', 'none')
+  $('#my-stores').css('display','none')
   $('#display-create-forms').css('display', 'none')
   $('#sign-out').css('display', 'none')
   $('#search-by-name').css('display', 'none')
