@@ -11,11 +11,12 @@ const renderStores = data => {
     <div class="card" style="width: 18rem;">
     <div class="card-body">
     <h5 class="card-title">${store.name}</h5>
-      <p class="card-text">${store.wifi}</p>
-      <p class="card-text">${store.outlets}</p>
-      <p class="card-text">${store.restrooms}</p>
-      <p class="card-text">${store.seating}</p>
-      <p class="card-text">${store.atmosphere}</p>
+      <p class="card-text">hours: ${store.schedule}</p>
+      <p class="card-text">wifi: ${store.wifi}</p>
+      <p class="card-text">power outlets: ${store.outlets}</p>
+      <p class="card-text">restrooms: ${store.restrooms}</p>
+      <p class="card-text">seating: ${store.seating}</p>
+      <p class="card-text">atmosphere: ${store.atmosphere}</p>
       <form class="save-store" id="store-id-${store.id}">
         <button class="save-store btn btn-primary" name="stores_user[store_id]" value="${store.id}" type="submit" class="btn btn-primary">Save</button>
       </form>
