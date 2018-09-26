@@ -30,7 +30,6 @@ const onSignInSuccess = data => {
   $('#search-by-name').css('display', 'inline')
   $('#sign-out').css('display', 'inline')
   $('#display-create-forms').css('display', 'inline')
-  $('#display-address-form').css('display', 'inline')
   clearFormFields()
 }
 
