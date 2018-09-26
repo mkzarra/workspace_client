@@ -29,7 +29,6 @@ const onSignInSuccess = data => {
   $('#change-password').css('display', 'inline')
   $('#search-by-name').css('display', 'inline')
   $('#sign-out').css('display', 'inline')
-  $('#search-by-address').css('display', 'block')
   $('#display-create-forms').css('display', 'inline')
   $('#display-address-form').css('display', 'inline')
   clearFormFields()

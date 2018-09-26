@@ -28,6 +28,7 @@ const updateAddress = data => {
 }
 
 const showAddress = data => {
+  console.log(data)
   return $.ajax({
     url: `${config.apiUrl}/addresses/`,
     method: 'GET',
