@@ -1,16 +1,24 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Kalam');
 
 .actions {
   background: #ffda76;
 }
 
+nav {
+  padding: 2rem;
+  background-color: rgb(48, 33, 59)
+}
+
 .branding {
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: 'Kalam', cursive;
   align-self: left;
-  color: #f62445;
-  font-size: 2em;
-  padding: .05%;
-  margin: auto;
+  color: rgb(145, 179, 142);
+  padding: .75%;
+  margin: 1%;
 }
 
 .card {
@@ -23,7 +31,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 #content {
-  background-color: #fae6b0;
+  background-color: rgb(231, 221, 225);
   margin: auto;
   align-self: center;
+}
+
+button {
+  font-weight: bold;
+  border-radius: 4px;
+  background: rgba(90, 82, 100, 0.473);
+  color: rgb(145, 179, 142);
+  border: rgb(90,82,100,0.473);
+  padding: 0.75%;
 }

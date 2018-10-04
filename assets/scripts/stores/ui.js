@@ -18,9 +18,9 @@ const renderStores = data => {
       <p class="card-text">seating: ${store.seating}</p>
       <p class="card-text">atmosphere: ${store.atmosphere}</p>
       <form class="save-store" id="store-id-${store.id}">
-        <button class="save-store btn btn-primary" name="stores_user[store_id]" value="${store.id}" type="submit" class="btn btn-primary">Save</button>
+        <button class="save-store" name="stores_user[store_id]" value="${store.id}" type="submit">Save</button>
       </form>
-        <button type="button" class="btn btn-primary display-update-form">Update</button>
+        <button type="button" class="display-update-form">Update</button>
       <form class="remove-store" style="display:none;">
         <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
       </form>
@@ -186,13 +186,13 @@ const onCreateSuccess = data => {
       <select name="stores_user[id]"  "style="display:none"">
       <option selected></option>
       </select>
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit" >Save</button>
       </form>
       <form class="remove-store">
       <select name="stores_user[id]" "style="display:none"">
       <option selected></option>
       </select>
-      <button type="submit" class="btn btn-primary">Remove</button>
+      <button type="submit">Remove</button>
       </form>
     </div>
     </div>
@@ -224,13 +224,13 @@ const onShowSuccess = data => {
       <select name="stores_user[id]"  style="display:none">
       <option selected></option>
       </select>
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit">Save</button>
       </form>
       <form class="remove-store">
       <select name="stores_user[id]" style="display:none">
       <option  selected></option>
       </select>
-      <button type="submit" class="btn btn-primary">Remove</button>
+      <button type="submit">Remove</button>
       </form>
     </div>
     </div>
