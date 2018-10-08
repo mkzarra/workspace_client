@@ -20,6 +20,7 @@ const renderStores = data => {
       <form class="save-store" id="store-id-${store.id}">
         <button class="save-store" name="stores_user[store_id]" value="${store.id}" type="submit">Save</button>
       </form>
+      <br />
         <button type="button" class="display-update-form">Update</button>
       <form class="remove-store" style="display:none;">
         <button type="submit" name="stores_user[store_id]" value="${store.id}" class="btn btn-primary delete-button">Remove</button>
@@ -188,6 +189,7 @@ const onCreateSuccess = data => {
       </select>
       <button type="submit" >Save</button>
       </form>
+      <br />
       <form class="remove-store">
       <select name="stores_user[id]" "style="display:none"">
       <option selected></option>
@@ -226,6 +228,7 @@ const onShowSuccess = data => {
       </select>
       <button type="submit">Save</button>
       </form>
+      <br />
       <form class="remove-store">
       <select name="stores_user[id]" style="display:none">
       <option  selected></option>
