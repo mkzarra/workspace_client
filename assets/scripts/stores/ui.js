@@ -8,7 +8,7 @@ const renderStores = data => {
   $('.card-content').empty()
   data.stores.forEach(store => {
     const storeHTML = (`
-    <div class="card" style="width: 18rem;">
+    <div class="card">
     <div class="card-body">
     <h5 class="card-title">${store.name}</h5>
       <p class="card-text">hours: ${store.schedule}</p>

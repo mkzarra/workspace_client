@@ -2,45 +2,80 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Kalam');
 
+body {
+  text-align: center;
+}
 
 nav {
   padding: 2rem;
-  background-color: rgb(48, 33, 59);
+  background-color: #e1e8f0;
+  border-bottom: 5px #fc9c77 solid;
 }
 
 .branding {
   font-size: 4rem;
   font-weight: bold;
-  font-family: 'Kalam', cursive;
+  font-family: Arial, cursive;
   align-self: left;
-  color: rgb(145, 179, 142);
+  color: #ed8a63;
   padding: .75%;
   margin: 1%;
+}
+
+.card-content {
+  padding: 20px;
 }
 
 .card {
   align-self: center;
   text-align: center;
   align-content: center;
-  background: rgba(52, 182, 26, 0.753);
-  margin: 2em;
+  background: #3a4660;
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
   padding: 16px;
-  border: 1px #333;
-  border-radius: 4px;
-  box-shadow: 3px 3px #ccc;
+  border: 1px solid rgb(81,81,81);
+  box-shadow: 0 1px 2px rgb(71, 71, 71);
+}
+
+.card-body {
+  width: 70%;
+  align-self:center;
+  padding: 10px;
+  margin:auto;
+  color: white
 }
 
 #content {
-  background-color: rgb(255, 255, 255);
+  background-color:#EFEAFF;
   margin: auto;
   align-self: center;
 }
 
-button {
+.form-control { 
+  width: 60%;
+  align-self:center;
+  margin:auto;
+}
+
+#search-by-name {
+  display: block;
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+button, .btn, .btn-class {
   font-weight: bold;
-  border-radius: 4px;
-  background: rgba(90, 82, 100, 0.473);
-  color: rgb(145, 179, 142);
-  border: rgba(90,82,100,0.473);
-  padding: 0.75%;
+  margin: 10px;
+  align-self:center;
+  background: #3a4660;
+  color: #ed8a63;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 2%;
+  border-radius: 0;
+}
+
+.btn-class:hover, .btn:hover {
+  background: #3a4660;
 }
