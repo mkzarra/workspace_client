@@ -4,11 +4,15 @@ const ui = require('./ui')
 
 const displaySignUpForm = e => {
   e.preventDefault()
+  $('#sign-in').css('display', 'none')
+  $('#sign-up').css('display', 'none')
   $('#sign-up-form').css('display', 'inline')
 }
 
 const displaySignInForm = e => {
   e.preventDefault()
+  $('#sign-in').css('display', 'none')
+  $('#sign-up').css('display', 'none')
   $('#sign-in-form').css('display', 'inline')
 }
 
