@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Remote Cafe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body id="content">
+      <nav id="actions">
+        <h1 id="title" class="branding">Remote Cafe</h1>
+        
+        <ul class="nav-list">
+          <!-- search bar starts -->
+        
+          <li id='search-form' class='nav-items'>
+            <form id="search-by-name" class="form-inline-block" style="display: none;">
+              <input name="store[name]" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button type="submit">Search</button>
+            </form>
+          </li>
+          <!-- search bar ends -->
+
+          <!-- my stores -->
+          <li class="nav-items">
+            <button id="my-stores" class="form-inline" style="display:none">My Stores</button>
+          </li>
+          <!-- end my stores -->
+
+          <!-- change password starts -->
+          <li class="nav-items">
+            <div id="change-pw-modal" style="display: none;">
+              <form id="change-password-form" class="auth-forms">
+                <div class="form-group">
+                  <label for="change-old-password">Old Password</label>
+                  <input type="password" class="form-control" id="chang-old-password" aria-describedby="emailHelp" name="password[old]" placeholder="old password">
+                </div>
+                <div class="form-group">
+                  <label for="change-new-password">New Password</label>
+                  <input type="password" class="form-control" id="change-new-password" name="password[new]" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <button id="change-password" type="button" class="show-forms" style="display: none;">Change Password</button>
+          </li>
+          <!-- change password ends -->
+
+          <!-- logout starts-->
+          <li class="nav-items">
+            <button id="sign-out" style="display:none;">Sign Out</button>
+          </li>
+          <!-- logout ends -->
+
+          <!-- sign in starts -->
+          <li class="nav-items">
+            <form id="sign-in-form" class="auth-forms" style="display: none;">
+              <div class="form-group">
+                <label for="sign-in-email">Email</label>
+                <input type="email" class="form-control" id="sign-in-email" aria-describedby="emailHelp" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-in-password">Password</label>
+                <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <button id="sign-in" type="button" class="show-forms">Sign In</button>
+          </li>
+          <!-- sign in ends -->
+            
+            <!-- sign up starts -->
+          <li class="nav-items">
+            <form id="sign-up-form" class="auth-forms" style="display: none;">
+              <div class="form-group">
+                <label for="sign-up-email">Email address</label>
+                <input type="email" name="credentials[email]" class="form-control" id="sign-up-email" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password">Password</label>
+                <input type="password" name="credentials[password" class="form-control" id="sign-up-password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password-confirmation">Password</label>
+                <input type="password" name="credentials[password_confirmation]" class="form-control" id="sign-up-password-confirmation" placeholder="Confirm Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <button id="sign-up" type="button" class="show-forms">Sign Up</button>            
+          </li>
+          <!-- sign up ends -->
+        </ul>
+      </nav>
+
+      <h5 id="message" class="user-feedback"></h5>
+      
+      <!-- start card -->
+      <div class="card-content">
+      </div>
+      <!-- end card -->
+
+      <!-- start address search -->
+      <form id="search-by-address" class="form-block" style="display: none;">
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input name="address[line_one]" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input name="address[line_two]" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input name="address[city]" type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select name="address[state]" id="inputState" class="form-control">
+              <option selected>Choose</option>
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input name="address[zip_code]" type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <button type="button" class="btn btn-primary" id="display-address-form" style="display: none;">Find a Store</button>
+      <!-- end address search -->
+
+      <!-- start create store -->
+      <form id="create-store" class="form-block" style="display: none;">
+      <!-- start name input -->
+      <div id="create-name" class="form-row">
+        <label for="inputName">Name</label>
+        <input name="store[name]" type="text" class="form-control" id="inputName">
+      </div>
+      <!-- end name input -->
+
+      <!-- start schedule input -->
+      <div id="create-schedule" class="form-row">
+        <label for="inputSchedule">Hours</label>
+        <input name="store[schedule]" type="text" class="form-control" id="inputSchedule">
+      </div>
+      <!-- end schedule input -->
+
+      <!-- start select wifi menu -->
+      <div id="create-wifi" class="form-group">
+      <select name="store[wifi]" id="wifi" class="custom-select">
+        <option selected>Is wifi available here?</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      </div>
+      <!-- end select menu -->
+
+      <!-- start select menu -->
+      <div id="create-seating" class="form-group">
+      <select name="store[seating]" id="seating" class="custom-select">
+        <option selected>Available seating</option>
+        <option value="Sparse">Sparse</option>
+        <option value="Limited">Limited</option>
+        <option value="Adiquate">Adiquate</option>
+        <option value="Plenty">Plenty</option>
+        <option value="Guaranteed">Guaranteed</option>
+      </select>
+      </div>
+      <!-- end select menu -->
+
+      <!-- start select menu -->
+      <div id="create-atmosphere" class="form-group">
+      <select name="store[atmosphere]" id="atmosphere" class="custom-select">
+        <option selected>Atmosphere</option>
+        <option value="Private">Private</option>
+        <option value="Vibrant">Vibrant</option>
+        <option value="Peaceful">Peaceful</option>
+      </select>
+      </div>
+      <!-- end select menu -->
+      <!-- start select menu -->
+      <div id="create-outlets" class="form-group">
+      <select name="store[outlets]" id="outlets" class="custom-select">
+        <option selected>Available power outlets</option>
+        <option value="None">None</option>
+        <option value="Sparse">Sparse</option>
+        <option value="Limited">Limited</option>
+        <option value="Plenty">Plenty</option>
+        <option value="Guaranteed">Guaranteed</option>
+      </select>
+      </div>
+      <!-- end select menu -->
+      <!-- start restroom checkboxes -->
+      <div class="form-check">
+        <h5 id="check-box-title">Restroom info</h5>
+        <p id="checkbox-descriptor">Select all that apply</p>
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="clean" id="clean">
+        <label class="form-check-label" for="clean">
+          Clean
+        </label>
+      </div>
+      <div class="form-check">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="large" id="large">
+        <label class="form-check-label" for="large">
+          Large
+        </label>
+      </div>
+      <div class="form-check">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="changing station" id="changing-station">
+        <label class="form-check-label" for="changing-station">
+          Changing Table
+        </label>
+      </div>
+      <div class="form-check">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="gender neutral" id="gender-neutral">
+        <label class="form-check-label" for="gender-neutral">
+          Gender neutral
+        </label>
+      </div>
+      <div class="form-check">
+        <input name="store[restrooms]" class="form-check-input" type="checkbox" value="single stall" id="single-stall">
+        <label class="form-check-label" for="single-stall">
+          Single stall
+        </label>
+      </div>
+
+      <!-- end restroom checkboxes -->
+      <button type="submit" id="create-button" class="btn btn-primary">Post</button>
+      </form>
+      <button type="button" id="display-create-forms" style="display:none;">Add a Store</button>
+      <!-- end create store -->
+
+      <!-- start add address -->
+            <form id="create-address" class="form-block" style="display: none;">
+              <div class="form-group">
+                <label for="inputAddressCreate">Address</label>
+                <input name="address[line_one]" type="text" class="form-control" id="inputAddressCreate" placeholder="1234 Main St">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2Create">Address 2</label>
+                <input name="address[line_two]" type="text" class="form-control" id="inputAddress2Create" placeholder="Apartment, studio, or floor">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCityCreate">City</label>
+                  <input name="address[city]" type="text" class="form-control" id="inputCityCreate">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputStateCreate">State</label>
+                  <select name="address[state]" id="inputStateCreate" class="form-control">
+                    <option selected>Choose</option>
+                    <option>AL</option>
+                    <option>AK</option>
+                    <option>AZ</option>
+                    <option>AR</option>
+                    <option>CA</option>
+                    <option>CO</option>
+                    <option>CT</option>
+                    <option>DE</option>
+                    <option>DC</option>
+                    <option>FL</option>
+                    <option>GA</option>
+                    <option>HI</option>
+                    <option>ID</option>
+                    <option>IL</option>
+                    <option>IN</option>
+                    <option>IA</option>
+                    <option>KS</option>
+                    <option>KY</option>
+                    <option>LA</option>
+                    <option>ME</option>
+                    <option>MD</option>
+                    <option>MA</option>
+                    <option>MI</option>
+                    <option>MN</option>
+                    <option>MS</option>
+                    <option>MO</option>
+                    <option>MT</option>
+                    <option>NE</option>
+                    <option>NV</option>
+                    <option>NH</option>
+                    <option>NJ</option>
+                    <option>NM</option>
+                    <option>NY</option>
+                    <option>NC</option>
+                    <option>ND</option>
+                    <option>OH</option>
+                    <option>OK</option>
+                    <option>OR</option>
+                    <option>PA</option>
+                    <option>RI</option>
+                    <option>SC</option>
+                    <option>SD</option>
+                    <option>TN</option>
+                    <option>TX</option>
+                    <option>UT</option>
+                    <option>VT</option>
+                    <option>VA</option>
+                    <option>WA</option>
+                    <option>WV</option>
+                    <option>WI</option>
+                    <option>WY</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZipCreate">Zip</label>
+                  <input name="address[zip_code]" type="text" class="form-control" id="inputZipCreate">
+                </div>
+              </div>
+              <button type="submit">Add</button>
+            </form>
+      <!-- end add address -->
+
+    </body>
+</html>
