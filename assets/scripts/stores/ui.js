@@ -1,18 +1,52 @@
 'use strict'
 const storeData = require('../store')
 
+const renderOneStore = store => {
+  let wifi = !store.wifi ? 'unavailable' : 'available'
+  const storeHTML = (`
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">${store.name}</h5>
+    <p class="card-text">hours: ${store.schedule}</p>
+      <p class="card-text">wifi: ${wifi}</p>
+      <p class="card-text">outlets: ${store.outlets}</p>
+      <p class="card-text">restrooms: ${store.restrooms}</p>
+      <p class="card-text">seating: ${store.seating}</p>
+      <p class="card-text">atmosphere: ${store.atmosphere}</p>
+      <form class="save-store">
+      <select name="stores_user[id]"  type="hidden">
+      <option selected></option>
+      </select>
+      <button type="submit">Save</button>
+      </form>
+      <br />
+      <form class="remove-store">
+      <select name="stores_user[id]" type="hidden">
+      <option selected></option>
+      </select>
+      <button type="submit">Remove</button>
+      </form>
+    </div>
+    </div>
+    `);
+  $('.card-content').append(storeHTML);
+  $('option').val(store.id);
+}
+
 const renderStores = data => {
   $('.form-block').hide()
   $('.form-inline').hide()
-  $('#search-by-name').show()
+  $('#search-form').css('dislplay', 'flex')
+  $('#my-stores').css('display', 'flex')
   $('.card-content').empty()
-  data.stores.forEach(store => {
+  data.stores.reverse().forEach(store => {
+    let wifi = !store.wifi ? 'unavailable' : 'available'
     const storeHTML = (`
     <div class="card">
     <div class="card-body">
-    <h5 class="card-title">${store.name}</h5>
+    <h2 class="card-title"><strong>${store.name}</strong></h2>
       <p class="card-text">hours: ${store.schedule}</p>
-      <p class="card-text">wifi: ${store.wifi}</p>
+      <p class="card-text">wifi: ${wifi}</p>
       <p class="card-text">power outlets: ${store.outlets}</p>
       <p class="card-text">restrooms: ${store.restrooms}</p>
       <p class="card-text">seating: ${store.seating}</p>
@@ -144,122 +178,71 @@ const renderStores = data => {
     </div>
   </div>
 </div>
-    `)
-    $('.card-content').append(storeHTML)
-  })
+    `);
+    $('.card-content').append(storeHTML);
+  });
 }
 
-const onSearchByNameSuccess = data => {
+const onSearchByNameSuccess = (data) => {
   $('#message').css('display', 'none')
   renderStores(data)
 }
 
-const onSearchByNameFailure = err => {
+const onSearchByNameFailure = (err) => {
   $('#message').text(`Search failed: ${err}`)
 }
 
-const onGetFailure = err => {
+const onGetFailure = (err) => {
   $('#message').text(`Could not find what you were looking for: ${err}`)
 }
 
-const onStoresIndexSuccess = data => {
+const onStoresIndexSuccess = (data) => {
   $('#message').css('display', 'none')
   renderStores(data)
   $('.save-store').css('display', 'none')
   $('.remove-store').css('display', 'block')
 }
 
-const onCreateSuccess = data => {
+const onCreateSuccess = (data) => {
   let store = data.store
-  $('#create-store').hide()
-  $('#create-address').css('display', 'block')
-  $('#message').text(`Thank you for adding ${store.name}`)
-  const storeHTML = (`
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-    <h5 class="card-title">${store.name}</h5>
-      <p class="card-text">${store.wifi}</p>
-      <p class="card-text">${store.outlets}</p>
-      <p class="card-text">${store.restrooms}</p>
-      <p class="card-text">${store.seating}</p>
-      <p class="card-text">${store.atmosphere}</p>
-      <form class="save-store">
-      <select name="stores_user[id]"  "style="display:none"">
-      <option selected></option>
-      </select>
-      <button type="submit" >Save</button>
-      </form>
-      <br />
-      <form class="remove-store">
-      <select name="stores_user[id]" "style="display:none"">
-      <option selected></option>
-      </select>
-      <button type="submit">Remove</button>
-      </form>
-    </div>
-    </div>
-    `)
-  $('.card-content').append(storeHTML)
-  $('option').val(store.id)
-  storeData.data = data.store.id
+  $('#create-store').hide();
+  $('#create-address').css('display', 'block');
+  $('#message').text(`Thank you for adding ${store.name}`);
+  renderOneStore(store);
+  storeData.data = data.store.id;
 }
 
-const onUpdateSuccess = data => {
-  $('#updateModal').modal('hide')
+const onUpdateSuccess = (data) => {
+  console.log(data);
+  $('#updateModal').modal('hide');
 }
 
-const onShowSuccess = data => {
-  storeData.data = data.store
-  console.log(data)
-  let store = data.store
-  $('#search-by-address').hide()
-  const storeHTML = (`
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-    <h5 class="card-title">${store.name}</h5>
-      <p class="card-text">${store.wifi}</p>
-      <p class="card-text">${store.outlets}</p>
-      <p class="card-text">${store.restrooms}</p>
-      <p class="card-text">${store.seating}</p>
-      <p class="card-text">${store.atmosphere}</p>
-      <form class="save-store">
-      <select name="stores_user[id]"  style="display:none">
-      <option selected></option>
-      </select>
-      <button type="submit">Save</button>
-      </form>
-      <br />
-      <form class="remove-store">
-      <select name="stores_user[id]" style="display:none">
-      <option  selected></option>
-      </select>
-      <button type="submit">Remove</button>
-      </form>
-    </div>
-    </div>
-    `)
-  $('.card-content').append(storeHTML)
-  $('option').val(store.id)
+const onShowSuccess = (data) => {
+  console.log(data);
+  const store = data.store;
+  $('#search-by-address').hide();
+  renderOneStore(store);
+  storeData.data = data.store;
 }
 
-const onSaveSuccess = data => {
-  storeData.data = data.stores_user
-  $('#search-by-name').css('display', 'inline')
-  console.log(storeData.data)
-  $('#message').text(`You have saved ${data.store_id} to your stores`)
+const onSaveSuccess = (data) => {
+  storeData.data = data.stores_user;
+  $('#search-by-name').css('display', 'inline');
+  console.log(storeData.data);
+  $('#message').text(`You have saved ${data.store_id} to your stores`);
 }
 
-const onSaveFailure = err => {
-  $('#message').text(`could not save. error is ${err}`)
+const onSaveFailure = (err) => {
+  $('#message').text(`could not save. error is ${err}`);
 }
 
 const onDeleteSuccess = () => {
-  $('#search-by-name').css('display', 'inline')
-  $('#message').text(`Successfully removed a store`)
+  $('#search-by-name').css('display', 'inline');
+  $('#message').text(`Successfully removed a store`);
 }
 
-const onDeleteFailure = err => {
-  $('#message').text(`could not remove. ${err}`)
+const onDeleteFailure = (err) => {
+  $('#message').text(`could not remove. ${err}`);
 }
 
 module.exports = {

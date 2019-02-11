@@ -14,54 +14,68 @@
     <body id="content">
       <nav id="actions">
         <h1 id="title" class="branding">Remote Cafe</h1>
-        <!-- search bar starts -->
-        <div id='search-form' class='form-inline'>
-          <form id="search-by-name" class="form-inline-block" style="display: none;">
-            <input name="store[name]" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
-          </form>
-          <div></div>
+        
+        <ul class="nav-list">
+          <!-- search bar starts -->
+        
+          <li id='search-form' class='nav-items'>
+            <form id="search-by-name" class="form-inline-block" style="display: none;">
+              <input name="store[name]" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button type="submit">Search</button>
+            </form>
+          </li>
           <!-- search bar ends -->
 
           <!-- my stores -->
-          <button id="my-stores" style="display:none">My Stores</button>
+          <li class="nav-items">
+            <button id="my-stores" class="form-inline" style="display:none">My Stores</button>
+          </li>
           <!-- end my stores -->
 
           <!-- change password starts -->
-          <form id="change-password-form" class="auth-forms" style="display: none;">
-            <div class="form-group">
-              <label for="change-old-password">Old Password</label>
-              <input type="password" class="form-control" id="chang-old-password" aria-describedby="emailHelp" name="password[old]" placeholder="old password">
+          <li class="nav-items">
+            <div id="change-pw-modal" style="display: none;">
+              <form id="change-password-form" class="auth-forms">
+                <div class="form-group">
+                  <label for="change-old-password">Old Password</label>
+                  <input type="password" class="form-control" id="chang-old-password" aria-describedby="emailHelp" name="password[old]" placeholder="old password">
+                </div>
+                <div class="form-group">
+                  <label for="change-new-password">New Password</label>
+                  <input type="password" class="form-control" id="change-new-password" name="password[new]" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="change-new-password">New Password</label>
-              <input type="password" class="form-control" id="change-new-password" name="password[new]" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          <button id="change-password" type="button" class="show-forms" style="display: none;">Change Password</button>
+            <button id="change-password" type="button" class="show-forms" style="display: none;">Change Password</button>
+          </li>
           <!-- change password ends -->
 
           <!-- logout starts-->
-          <button id="sign-out" style="display:none;">Sign Out</button>
+          <li class="nav-items">
+            <button id="sign-out" style="display:none;">Sign Out</button>
+          </li>
           <!-- logout ends -->
 
           <!-- sign in starts -->
-          <form id="sign-in-form" class="auth-forms" style="display: none;">
-            <div class="form-group">
-              <label for="sign-in-email">Email address</label>
-              <input type="email" class="form-control" id="sign-in-email" aria-describedby="emailHelp" name="credentials[email]" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="sign-in-password">Password</label>
-              <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          <button id="sign-in" type="button" class="show-forms">Sign In</button>
-            <!-- sign in ends -->
+          <li class="nav-items">
+            <form id="sign-in-form" class="auth-forms" style="display: none;">
+              <div class="form-group">
+                <label for="sign-in-email">Email</label>
+                <input type="email" class="form-control" id="sign-in-email" aria-describedby="emailHelp" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-in-password">Password</label>
+                <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <button id="sign-in" type="button" class="show-forms">Sign In</button>
+          </li>
+          <!-- sign in ends -->
             
             <!-- sign up starts -->
+          <li class="nav-items">
             <form id="sign-up-form" class="auth-forms" style="display: none;">
               <div class="form-group">
                 <label for="sign-up-email">Email address</label>
@@ -78,8 +92,10 @@
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <button id="sign-up" type="button" class="show-forms">Sign Up</button>
-            <!-- sign up ends -->
+            <button id="sign-up" type="button" class="show-forms">Sign Up</button>            
+          </li>
+          <!-- sign up ends -->
+        </ul>
       </nav>
 
       <h5 id="message" class="user-feedback"></h5>

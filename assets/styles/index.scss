@@ -7,19 +7,44 @@ body {
 }
 
 nav {
-  padding: 2rem;
+  display: block;
+  padding: 16px;
+  margin-bottom: 6px;
   background-color: #e1e8f0;
-  border-bottom: 5px #fc9c77 solid;
+  border-bottom: #546486;
+  box-shadow: 0 4px 6px rgb(155, 146, 146);
+  box-sizing: border-box;
+  height: 200px;
+  position: static;
+}
+
+.form-group {
+  display: inline;
+}
+
+.nav-list {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-items {
+  list-style-type: none;
 }
 
 .branding {
+  text-align: left;
+  text-shadow: -1px 0 #922900,
+    0 1px #922900,
+    1px 0 #df490e,
+    0 -1px #df490e;
   font-size: 4rem;
   font-weight: bold;
-  font-family: Arial, cursive;
-  align-self: left;
-  color: #ed8a63;
+  font-family: 'Kalam', cursive;
+  color: #c03600;
   padding: .75%;
-  margin: 1%;
+  margin: 10px 10px 10px 40px ;
+  width: 35%;
 }
 
 .card-content {
@@ -30,33 +55,68 @@ nav {
   align-self: center;
   text-align: center;
   align-content: center;
-  background: #3a4660;
-  width: 70%;
+  background: #c0c9dd;
+  width: 50%;
   margin: auto;
   margin-top: 20px;
   padding: 16px;
-  border: 1px solid rgb(81,81,81);
-  box-shadow: 0 1px 2px rgb(71, 71, 71);
+  border: 1px solid rgb(198, 200, 221);
+  box-shadow: 1px 3px 5px rgb(107, 106, 106);
 }
 
 .card-body {
   width: 70%;
-  align-self:center;
-  padding: 10px;
-  margin:auto;
-  color: white
+  align-self: center;
+  margin: auto;
+  color: #444343;
+  font-weight: bold;
 }
 
 #content {
-  background-color:#EFEAFF;
+  background-color: rgb(247, 245, 255);
   margin: auto;
   align-self: center;
 }
 
-.form-control { 
-  width: 60%;
-  align-self:center;
-  margin:auto;
+@keyframes showforms {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes showforms {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+
+  to {
+    left: 0px;
+    opacity: 1;
+  }
+}
+
+#change-pw-modal {
+  
+}
+
+.form-control {
+  display: inline;
+  width: 30%;
+  align-self: center;
+  margin: auto;
+  /* Add animation */
+  -webkit-animation-name: showforms;
+  /* Chrome, Safari, Opera */
+  -webkit-animation-duration: .2s;
+  /* Chrome, Safari, Opera */
+  animation-name: showforms;
+  animation-duration: .2s;
 }
 
 #search-by-name {
@@ -65,17 +125,38 @@ nav {
   padding-bottom: 15px;
 }
 
-button, .btn, .btn-class {
-  font-weight: bold;
-  margin: 10px;
-  align-self:center;
-  background: #3a4660;
-  color: #ed8a63;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 2%;
-  border-radius: 0;
+#search-by-name input[type=search] {
+  width: 30%;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
-.btn-class:hover, .btn:hover {
-  background: #3a4660;
+#search-by-name input[type=search]:focus {
+  width: 100%;
+}
+
+button,
+.btn,
+.btn-class {
+  font-weight: bold;
+  margin: 6px;
+  background: #e06534;
+  color: #0d1931;
+  border: 1px solid #3a4660;
+  padding: 10px;
+  border-radius: 0;
+  box-sizing: border-box;
+  height: 50px;
+  width: 90px;
+  transition: .25s;
+}
+
+button:hover,
+.btn-class:hover,
+.btn:hover {
+  background: #fc9871;
+  color: #0d1931;
+  border: 1px solid #323846;
+  height: 53px;
+  width: 95px;
 }
